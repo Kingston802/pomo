@@ -5,3 +5,9 @@
   justify-content: center;
   height: 90vh;
 }
+.digit {
+  font-size: 10vw;
+}
+.sec {
+  margin-left: .25em;
+}

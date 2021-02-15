@@ -17,18 +17,13 @@ function TimerWrapper() {
       >
         {({ start, resume, pause, stop, reset, timerState }) => (
             <React.Fragment>
-                <div>
-                    <Timer.Hours /> hours 
-                    <br></br>
-                    <Timer.Minutes /> minutes 
-                    <br></br>
-                    <Timer.Seconds /> seconds 
+                <div className="digit">
+                    <span className="min"><Timer.Minutes /> m</span>
+                    <span className="sec"><Timer.Seconds /> s</span>
                 </div>
                 <br />
                 <div>
                     <button onClick={start}>Start</button>
-                    <button onClick={pause}>Pause</button>
-                    <button onClick={resume}>Resume</button>
                     <button onClick={stop}>Stop</button>
                     <button onClick={reset}>Reset</button>
                 </div>
