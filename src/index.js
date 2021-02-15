@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header';
-import TimerWrapper from './components/TimerWrapper';
+import './index.css';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header/>
-    <TimerWrapper/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

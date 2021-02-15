@@ -1,0 +1,30 @@
+h2 {
+  font-size: 2vw;
+  text-align: center;
+  margin:0;
+  color: white;
+  margin-bottom: 1em;
+}
+ul {
+  list-style: none;
+  text-align: center;
+  font-size: 3vw;
+  margin: 0;
+  padding: 0;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  background-color: #76949F;
+}
+li {
+  color: white;
+  background-color: #435860;
+  transition: 400ms;
+  width: 50%;
+  margin: 0 auto;
+}
+ul li:not(:last-child) {
+  border-bottom: 2px solid #111618;
+}
+li:hover {
+  padding: .5em 0;
+}
