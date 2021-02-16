@@ -5,7 +5,7 @@ import Items from './components/Items';
 import Footer from './components/Footer';
 
 function App() {
-  const [items, setItems] = useState(['Calculus', 'Games', 'Programming']);
+  const [items, setItems] = useState([]);
   return (
     <>
       <Header/>
