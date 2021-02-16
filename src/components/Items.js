@@ -9,6 +9,8 @@ function Items(props) {
   return (
     <ul>
       <h2>Tasks</h2>
+      <input className="task"></input>
+      <button onClick={() => {props.setItems([...props.items, document.querySelector('.task').value])}}>Add</button>
       { listItems }
     </ul>
   )

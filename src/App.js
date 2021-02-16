@@ -10,7 +10,7 @@ function App() {
     <>
       <Header/>
       <TimerWrapper/>
-      <Items items={items}/>
+      <Items items={items} setItems={setItems}/>
       <Footer/>
     </>
   )
