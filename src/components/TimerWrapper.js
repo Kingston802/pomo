@@ -1,6 +1,16 @@
 import React from 'react';
 import './TimerWrapper.css';
 import Timer from 'react-compound-timer';
+import ding from '../assets/sounds/alert.mp3';
+
+function TimerFinished() {
+  // play ding!
+  console.log("Timerfinished");
+  const timer = document.querySelector('.TimerWrapper');
+  // const audio = (<audio src={ding} autoPlay></audio>)
+  const audio = new Audio(ding);
+  audio.play()
+}
 
 function TimerWrapper() {
   return (
@@ -14,6 +24,12 @@ function TimerWrapper() {
         onPause={() => console.log('onPause hook')}
         onStop={() => console.log('onStop hook')}
         onReset={() => console.log('onReset hook')}
+        checkpoints={[
+          {
+            time: 0,
+            callback: TimerFinished
+          }
+        ]}
       >
         {({ start, resume, pause, stop, reset, timerState }) => (
             <React.Fragment>
@@ -30,6 +46,7 @@ function TimerWrapper() {
             </React.Fragment>
         )}
       </Timer>
+      <audio style={ {display: 'none'} } src={ding}></audio>
     </div>
   )
 }
