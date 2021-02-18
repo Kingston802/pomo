@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './TimerWrapper.css';
 import Timer from 'react-compound-timer';
 import ding from '../assets/sounds/alert.mp3';
 
-function TimerFinished() {
-  // play ding!
-  console.log("Timerfinished");
-  const timer = document.querySelector('.TimerWrapper');
-  // const audio = (<audio src={ding} autoPlay></audio>)
-  const audio = new Audio(ding);
-  audio.play()
-}
+function TimerWrapper(props) {
+  const audio = useRef(null);
 
-function TimerWrapper() {
+  function TimerFinished() {
+    // play ding!
+    audio.current.play();
+  };
+
   return (
     <div className="TimerWrapper">
       <Timer
@@ -46,7 +44,7 @@ function TimerWrapper() {
             </React.Fragment>
         )}
       </Timer>
-      <audio style={ {display: 'none'} } src={ding}></audio>
+      <audio ref={audio} style={ {display: 'none'} } src={ding}></audio>
     </div>
   )
 }
