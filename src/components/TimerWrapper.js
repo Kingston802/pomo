@@ -5,19 +5,36 @@ import ding from '../assets/sounds/alert.mp3';
 
 function TimerWrapper(props) {
   const audio = useRef(null);
-  const [timerState, setTimerState] = useState(false);
-
-  function TimerFinished() {
-    // play ding!
-    audio.current.play();
-  };
+  const [timerState, setTimerState] = useState('off');
 
   useEffect(() => {
-    if (timerState && props.items.length > 0) {
-      // update current item
-      document.querySelector('.CurrentItem').innerHTML = props.items[0].key;
+    switch (timerState) {
+      case 'on':
+        console.log('on');
+        if (props.items.length > 0) {
+          // update current item
+          document.querySelector('.CurrentItem').innerHTML = props.items[0].key;
+        }  else {
+          document.querySelector('.CurrentItem').innerHTML = '';
+        }
+        break;
+      case 'off':
+        document.querySelector('.CurrentItem').innerHTML = '';
+        break;
+      case 'finished':
+        console.log('finished');
+        // play ding!
+        audio.current.play();
+        // remove top task
+        let newItems = [...props.items];
+        newItems.splice(0,1);
+        props.setItems(newItems);
+        setTimerState('off');
+        break;
+      default:
+        console.log('default');
     }
-  });
+  }, [props.setItems, props.items, timerState]);
 
   return (
     <div className="TimerWrapper">
@@ -26,24 +43,24 @@ function TimerWrapper(props) {
         startImmediately={false}
         direction="backward"
         onStart={() => {
-          // toggle timer state 
-          setTimerState(!timerState);
+          // change timer state 
+          setTimerState('on');
         }}
         onStop={() => {
           // toggle timer state 
-          setTimerState(!timerState);
+          setTimerState('off');
         }}
         onReset={() => {
-          setTimerState(false);
+          setTimerState('off');
         }}
         checkpoints={[
           {
             time: 0,
-            callback: TimerFinished
-          }
+            callback: () => setTimerState('finished') 
+          },
         ]}
       >
-        {({ start, resume, pause, stop, reset, timerState }) => (
+        {({ start, stop, reset }) => (
             <React.Fragment>
                 <div className="digit">
                     <span className="min"><Timer.Minutes /> m</span>
