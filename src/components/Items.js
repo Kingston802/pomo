@@ -1,6 +1,5 @@
 import './Items.css'
 
-
 function Items(props) {
 
   function handleItemClick(c) {
@@ -28,7 +27,7 @@ function Items(props) {
   const listItems = [...props.items];
 
   return (
-    <ul>
+    <ul className="Items">
       <div className="TaskInput">
         <input className="task" onKeyDown={(event) => { if (event.key === 'Enter') {handleButtonClick()} } }></input>
         <button onClick={handleButtonClick}>➕</button>

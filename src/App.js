@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header/>
-      <TimerWrapper/>
+      <TimerWrapper items={items} setItems={setItems}/>
       <Items items={items} setItems={setItems}/>
       <Footer/>
     </>

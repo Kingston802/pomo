@@ -1,15 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './TimerWrapper.css';
 import Timer from 'react-compound-timer';
 import ding from '../assets/sounds/alert.mp3';
 
 function TimerWrapper(props) {
   const audio = useRef(null);
+  const [timerState, setTimerState] = useState(false);
 
   function TimerFinished() {
     // play ding!
     audio.current.play();
   };
+
+  useEffect(() => {
+    if (timerState && props.items.length > 0) {
+      // update current item
+      document.querySelector('.CurrentItem').innerHTML = props.items[0].key;
+    }
+  });
 
   return (
     <div className="TimerWrapper">
@@ -17,11 +25,17 @@ function TimerWrapper(props) {
         initialTime={1500000} // 25 minutes in ms
         startImmediately={false}
         direction="backward"
-        onStart={() => console.log('onStart hook')}
-        onResume={() => console.log('onResume hook')}
-        onPause={() => console.log('onPause hook')}
-        onStop={() => console.log('onStop hook')}
-        onReset={() => console.log('onReset hook')}
+        onStart={() => {
+          // toggle timer state 
+          setTimerState(!timerState);
+        }}
+        onStop={() => {
+          // toggle timer state 
+          setTimerState(!timerState);
+        }}
+        onReset={() => {
+          setTimerState(false);
+        }}
         checkpoints={[
           {
             time: 0,
@@ -44,6 +58,7 @@ function TimerWrapper(props) {
             </React.Fragment>
         )}
       </Timer>
+      <p className="CurrentItem"></p>
       <audio ref={audio} style={ {display: 'none'} } src={ding}></audio>
     </div>
   )
