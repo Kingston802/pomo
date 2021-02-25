@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Pomo 
+
+This project is a [Pomodoro Timer](https://www.wikiwand.com/en/Pomodoro_Technique). 
+I created this project because while I liked existing solutions such as [pomodoro-tracker]( https://pomodoro-tracker.com/ ), I needed a way to sync everything between my devices and I wanted to make some more changes (and practice my React skills). 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
