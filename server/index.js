@@ -6,7 +6,7 @@ const { readFile } = require('fs');
 app.post('/api/items', (request, response) => {
     if (err) {
         console.error(err);
-        response.sendStatus(500) // equivalent to res.status(500).send('Internal Server Error')
+        response.sendStatus(500); // equivalent to res.status(500).send('Internal Server Error')
     }
 
     console.log('create request!');
@@ -17,7 +17,7 @@ app.get('/api/items', (request, response) => {
     readFile('./db.json', (err, json) => {
         if (err) {
             console.error(err);
-            response.sendStatus(500) // equivalent to res.status(500).send('Internal Server Error')
+            response.sendStatus(500); // equivalent to res.status(500).send('Internal Server Error')
         }
 
         let obj = JSON.parse(json);
